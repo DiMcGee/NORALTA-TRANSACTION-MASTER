@@ -1,0 +1,367 @@
+{
+  "residential": {
+    "label": "Residential Transaction",
+    "forms": [
+      {
+        "code": "RES-BRA",
+        "stage": "pre-contract",
+        "required": false
+      },
+      {
+        "code": "RES-SRA",
+        "stage": "pre-contract",
+        "required": false
+      },
+      {
+        "code": "RES-SRA-A",
+        "stage": "pre-contract",
+        "required": false
+      },
+      {
+        "code": "RES-DUAL",
+        "stage": "pre-contract",
+        "required": false
+      },
+      {
+        "code": "RES-DUAL-A",
+        "stage": "pre-contract",
+        "required": false
+      },
+      {
+        "code": "RES-RA-ADD",
+        "stage": "pre-contract",
+        "required": false
+      },
+      {
+        "code": "RES-CRG",
+        "stage": "pre-contract",
+        "required": true
+      },
+      {
+        "code": "RES-PC",
+        "stage": "contract",
+        "required": true
+      },
+      {
+        "code": "CR-PC",
+        "stage": "contract",
+        "required": false
+      },
+      {
+        "code": "RES-PC-AMD",
+        "stage": "contract",
+        "required": false
+      },
+      {
+        "code": "RES-PC-ADD",
+        "stage": "contract",
+        "required": false
+      },
+      {
+        "code": "RES-REM",
+        "stage": "contract",
+        "required": false
+      },
+      {
+        "code": "RES-CON-I",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "RES-CON-E",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-BOR",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-BRA",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-COR",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-MAA",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-IND",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-PEP",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-ROF",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "NOT-W",
+        "stage": "post-contract",
+        "required": false
+      },
+      {
+        "code": "NOT-NW",
+        "stage": "post-contract",
+        "required": false
+      },
+      {
+        "code": "NOT-CSD",
+        "stage": "post-contract",
+        "required": false
+      },
+      {
+        "code": "NOT-HH",
+        "stage": "post-contract",
+        "required": false
+      }
+    ]
+  },
+  "commercial": {
+    "label": "Commercial Transaction",
+    "forms": [
+      {
+        "code": "COM-BRA",
+        "stage": "pre-contract",
+        "required": false
+      },
+      {
+        "code": "COM-BRA-A",
+        "stage": "pre-contract",
+        "required": false
+      },
+      {
+        "code": "COM-BRA-T",
+        "stage": "pre-contract",
+        "required": false
+      },
+      {
+        "code": "COM-BDA",
+        "stage": "pre-contract",
+        "required": false
+      },
+      {
+        "code": "RES-CRG",
+        "stage": "pre-contract",
+        "required": true
+      },
+      {
+        "code": "COM-PC",
+        "stage": "contract",
+        "required": true
+      },
+      {
+        "code": "RES-PC-AMD",
+        "stage": "contract",
+        "required": false
+      },
+      {
+        "code": "RES-PC-ADD",
+        "stage": "contract",
+        "required": false
+      },
+      {
+        "code": "RES-REM",
+        "stage": "contract",
+        "required": false
+      },
+      {
+        "code": "RES-CON-I",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "RES-CON-E",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-BOR",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-BRA",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-COR",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-MAA",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-IND",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-PEP",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-ROF",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "NOT-W",
+        "stage": "post-contract",
+        "required": false
+      },
+      {
+        "code": "NOT-NW",
+        "stage": "post-contract",
+        "required": false
+      }
+    ]
+  },
+  "lease": {
+    "label": "Lease Transaction",
+    "forms": [
+      {
+        "code": "COM-LRA",
+        "stage": "pre-contract",
+        "required": false
+      },
+      {
+        "code": "COM-LRA-A",
+        "stage": "pre-contract",
+        "required": false
+      },
+      {
+        "code": "COM-LRA-AP",
+        "stage": "pre-contract",
+        "required": false
+      },
+      {
+        "code": "COM-DUAL",
+        "stage": "pre-contract",
+        "required": false
+      },
+      {
+        "code": "RES-CRG",
+        "stage": "pre-contract",
+        "required": true
+      },
+      {
+        "code": "COM-OTL",
+        "stage": "contract",
+        "required": true
+      },
+      {
+        "code": "FIN-BOR",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-BRA",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-COR",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-MAA",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-IND",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-PEP",
+        "stage": "compliance",
+        "required": false
+      },
+      {
+        "code": "FIN-ROF",
+        "stage": "compliance",
+        "required": false
+      }
+    ]
+  },
+  "office": {
+    "label": "Office / Administrative",
+    "forms": [
+      {
+        "code": "OFF-LAS",
+        "stage": "admin",
+        "required": false
+      },
+      {
+        "code": "OFF-BRF",
+        "stage": "admin",
+        "required": false
+      },
+      {
+        "code": "OFF-CAN",
+        "stage": "admin",
+        "required": false
+      },
+      {
+        "code": "OFF-EFT",
+        "stage": "admin",
+        "required": false
+      },
+      {
+        "code": "OFF-LST",
+        "stage": "admin",
+        "required": false
+      },
+      {
+        "code": "OFF-REF",
+        "stage": "admin",
+        "required": false
+      },
+      {
+        "code": "OFF-PTD",
+        "stage": "admin",
+        "required": false
+      },
+      {
+        "code": "OFF-NAR",
+        "stage": "admin",
+        "required": false
+      },
+      {
+        "code": "OFF-TTS",
+        "stage": "admin",
+        "required": false
+      },
+      {
+        "code": "OFF-TIS",
+        "stage": "admin",
+        "required": false
+      },
+      {
+        "code": "OFF-ABC",
+        "stage": "admin",
+        "required": false
+      }
+    ]
+  }
+}

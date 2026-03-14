@@ -1,0 +1,27 @@
+node_modules/
+
+# Build/dev artifacts (not needed at runtime)
+scripts/field-maps/
+scripts/pdf-fields.json
+scripts/pdf-fields-with-labels.json
+scripts/extract-labels-stderr.txt
+
+# Test files
+test-pdfs/
+fix-test-pdfs/
+pressure-test.js
+pressure-test-v2.js
+
+# Claude Code local settings (contains tokens)
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.*
+
+# Backups
+data/template-map-backup.json

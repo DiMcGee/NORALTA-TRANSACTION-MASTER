@@ -1,0 +1,250 @@
+{
+  "transaction": {
+    "label": "Transaction",
+    "pattern": "self",
+    "table": "transactions",
+    "fk": null,
+    "readOnly": false,
+    "columns": ["contract_number", "purchase_price", "completion_date", "conditional", "firm", "sale_price", "initial_deposit", "additional_deposit", "deposit_held_by", "possession_date", "binding_date", "condition_removal_date", "new_home"]
+  },
+  "agent": {
+    "label": "Agent/Rep",
+    "pattern": "direct",
+    "table": "agents",
+    "fk": "agent_id",
+    "readOnly": false,
+    "columns": ["full_name", "phone", "fax", "email"]
+  },
+  "property": {
+    "label": "Property",
+    "pattern": "direct",
+    "table": "properties",
+    "fk": "property_id",
+    "readOnly": false,
+    "columns": ["municipal_address", "plan", "block", "lot", "municipality", "postal_code", "linc", "zoning", "condo_plan", "condo_unit", "address", "condo_name", "block_unit", "legal_description", "city", "linc_number"]
+  },
+  "property_rural": {
+    "label": "Property (Rural/ATS)",
+    "pattern": "direct",
+    "table": "properties",
+    "fk": "property_id",
+    "readOnly": false,
+    "columns": ["quarter_section", "township", "range", "meridian", "range_val", "section", "quarter"]
+  },
+  "brokerage": {
+    "label": "Brokerage",
+    "pattern": "office",
+    "table": "brokerages",
+    "fixedId": 1,
+    "readOnly": true,
+    "columns": ["name", "name_2", "address", "postal_code", "phone", "fax", "email", "city"]
+  },
+  "buyer": {
+    "label": "Buyer (Primary)",
+    "pattern": "participant",
+    "role": "buyer",
+    "entityTable": "parties",
+    "entityFK": "party_id",
+    "columns": ["full_name", "address", "postal_code", "phone", "fax", "email", "date_of_birth", "gst_number", "city", "phone_2"]
+  },
+  "buyer_2": {
+    "label": "Buyer (Secondary)",
+    "pattern": "participant",
+    "role": "buyer_2",
+    "entityTable": "parties",
+    "entityFK": "party_id",
+    "columns": ["full_name", "address", "postal_code", "phone", "fax", "email"]
+  },
+  "seller": {
+    "label": "Seller (Primary)",
+    "pattern": "participant",
+    "role": "seller",
+    "entityTable": "parties",
+    "entityFK": "party_id",
+    "columns": ["full_name", "legally_married", "address", "postal_code", "phone", "fax", "email", "gst_number", "city", "resided_on_property", "spouse_name"]
+  },
+  "seller_2": {
+    "label": "Seller (Secondary)",
+    "pattern": "participant",
+    "role": "seller_2",
+    "entityTable": "parties",
+    "entityFK": "party_id",
+    "columns": ["full_name", "address", "postal_code", "phone", "fax", "email"]
+  },
+  "buyer_agent": {
+    "label": "Buyer's Agent",
+    "pattern": "participant",
+    "role": "buyer_agent",
+    "entityTable": "agents",
+    "entityFK": "agent_id",
+    "columns": ["full_name", "phone", "fax", "email"]
+  },
+  "seller_agent": {
+    "label": "Seller's Agent",
+    "pattern": "participant",
+    "role": "seller_agent",
+    "entityTable": "agents",
+    "entityFK": "agent_id",
+    "columns": ["full_name", "phone", "fax", "email"]
+  },
+  "buyer_brokerage": {
+    "label": "Buyer's Brokerage",
+    "pattern": "participant",
+    "role": "buyer_agent",
+    "entityTable": "brokerages",
+    "entityFK": "brokerage_id",
+    "columns": ["name", "address", "phone", "city", "postal_code", "board_membership"]
+  },
+  "seller_brokerage": {
+    "label": "Seller's Brokerage",
+    "pattern": "participant",
+    "role": "seller_agent",
+    "entityTable": "brokerages",
+    "entityFK": "brokerage_id",
+    "columns": ["name", "address", "phone", "city", "postal_code", "branch_number", "board_membership"]
+  },
+  "buyer_lawyer": {
+    "label": "Buyer's Lawyer",
+    "pattern": "participant",
+    "role": "buyer_lawyer",
+    "entityTable": "lawyers",
+    "entityFK": "lawyer_id",
+    "columns": ["full_name", "firm", "address", "phone", "fax", "email", "city", "postal_code"]
+  },
+  "seller_lawyer": {
+    "label": "Seller's Lawyer",
+    "pattern": "participant",
+    "role": "seller_lawyer",
+    "entityTable": "lawyers",
+    "entityFK": "lawyer_id",
+    "columns": ["full_name", "firm", "address", "phone", "fax", "email", "city", "postal_code"]
+  },
+  "buyer_entity": {
+    "label": "Buyer Entity",
+    "pattern": "participant",
+    "role": "buyer",
+    "entityTable": "parties",
+    "entityFK": "party_id",
+    "columns": ["entity_name"]
+  },
+  "entity_rep": {
+    "label": "Entity Rep",
+    "pattern": "participant",
+    "role": "buyer",
+    "entityTable": "parties",
+    "entityFK": "party_id",
+    "columns": ["auth_rep_name", "auth_rep_title"]
+  },
+  "landlord": {
+    "label": "Landlord (Primary)",
+    "pattern": "participant",
+    "role": "landlord",
+    "entityTable": "parties",
+    "entityFK": "party_id",
+    "columns": ["full_name", "address", "postal_code", "phone", "fax", "email", "corporate_name", "gst_number"]
+  },
+  "landlord_2": {
+    "label": "Landlord (Secondary)",
+    "pattern": "participant",
+    "role": "landlord_2",
+    "entityTable": "parties",
+    "entityFK": "party_id",
+    "columns": ["full_name", "address", "postal_code", "phone", "fax", "email"]
+  },
+  "tenant": {
+    "label": "Tenant (Primary)",
+    "pattern": "participant",
+    "role": "tenant",
+    "entityTable": "parties",
+    "entityFK": "party_id",
+    "columns": ["full_name", "address", "postal_code", "phone", "fax", "email", "corporate_name", "gst_number"]
+  },
+  "tenant_2": {
+    "label": "Tenant (Secondary)",
+    "pattern": "participant",
+    "role": "tenant_2",
+    "entityTable": "parties",
+    "entityFK": "party_id",
+    "columns": ["full_name", "address", "postal_code", "phone", "fax", "email"]
+  },
+  "landlord_agent": {
+    "label": "Landlord's Agent",
+    "pattern": "participant",
+    "role": "landlord_agent",
+    "entityTable": "agents",
+    "entityFK": "agent_id",
+    "columns": ["full_name", "phone", "fax", "email"]
+  },
+  "tenant_agent": {
+    "label": "Tenant's Agent",
+    "pattern": "participant",
+    "role": "tenant_agent",
+    "entityTable": "agents",
+    "entityFK": "agent_id",
+    "columns": ["full_name", "phone", "fax", "email"]
+  },
+  "landlord_brokerage": {
+    "label": "Landlord's Brokerage",
+    "pattern": "participant",
+    "role": "landlord_agent",
+    "entityTable": "brokerages",
+    "entityFK": "brokerage_id",
+    "columns": ["name", "address"]
+  },
+  "tenant_brokerage": {
+    "label": "Tenant's Brokerage",
+    "pattern": "participant",
+    "role": "tenant_agent",
+    "entityTable": "brokerages",
+    "entityFK": "brokerage_id",
+    "columns": ["name", "address"]
+  },
+  "landlord_lawyer": {
+    "label": "Landlord's Lawyer",
+    "pattern": "participant",
+    "role": "landlord_lawyer",
+    "entityTable": "lawyers",
+    "entityFK": "lawyer_id",
+    "columns": ["full_name", "firm", "address", "phone", "fax", "email"]
+  },
+  "tenant_lawyer": {
+    "label": "Tenant's Lawyer",
+    "pattern": "participant",
+    "role": "tenant_lawyer",
+    "entityTable": "lawyers",
+    "entityFK": "lawyer_id",
+    "columns": ["full_name", "firm", "address", "phone", "fax", "email"]
+  },
+  "listing": {
+    "label": "Listing",
+    "pattern": "child",
+    "table": "listing",
+    "fk": "transaction_id",
+    "readOnly": false,
+    "columns": ["list_price", "listing_number", "mls_number", "list_date", "expiry_date"]
+  },
+  "buyer_search": {
+    "label": "Search Criteria",
+    "pattern": "child",
+    "table": "buyer_rep",
+    "fk": "transaction_id",
+    "readOnly": false,
+    "columns": ["property_type", "market_areas"]
+  },
+  "com_buyer_search": {
+    "label": "Commercial Search Criteria",
+    "pattern": "child",
+    "table": "commercial_buyer_rep",
+    "fk": "transaction_id",
+    "readOnly": false,
+    "columns": ["property_type", "market_areas"]
+  },
+  "com_listing": {
+    "label": "Commercial Listing",
+    "pattern": "child",
+    "table": "commercial_landlord_rep",
+    "fk": "transaction_id",
+    "readOnly": false,
+    "columns": ["listing_number"]
+  }
+}
