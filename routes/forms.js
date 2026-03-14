@@ -15,7 +15,8 @@ const {
   loadFormValues,
   saveFormValues,
   loadReuseGroupData,
-  calculateProgress
+  calculateProgress,
+  saveFillData
 } = require(path.join(__dirname, '..', 'lib', 'reuse-engine'));
 const { onFormMilestone } = require(path.join(__dirname, '..', 'lib', 'notifications'));
 
@@ -247,6 +248,82 @@ module.exports = function (pool) {
       });
     } catch (e) {
       console.error('Progress error:', e.message);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+
+  // ========================================================================
+  // GET /api/deals/:id/fill-data - Load core deal data for text fill
+  // ========================================================================
+  router.get('/deals/:id/fill-data', async (req, res) => {
+    try {
+      const dealId = parseInt(req.params.id);
+      if (isNaN(dealId)) return res.status(400).json({ error: 'Invalid deal ID' });
+
+      const owns = await verifyDealOwnership(pool, dealId, req.agent.agent_id);
+      if (!owns) return res.status(404).json({ error: 'Deal not found' });
+
+      // Determine groups based on transaction type
+      const txnResult = await pool.query('SELECT transaction_type FROM transactions WHERE id = $1', [dealId]);
+      const txnType = txnResult.rows[0]?.transaction_type || 'residential';
+      const isLease = txnType === 'lease';
+
+      const groupNames = [
+        'transaction', 'property',
+        ...(isLease
+          ? ['landlord', 'landlord_2', 'tenant', 'tenant_2', 'landlord_lawyer', 'tenant_lawyer']
+          : ['buyer', 'buyer_2', 'seller', 'seller_2', 'buyer_lawyer', 'seller_lawyer']
+        ),
+      ];
+
+      const groups = {};
+      await Promise.all(groupNames.map(async (name) => {
+        try {
+          groups[name] = await loadReuseGroupData(pool, dealId, name);
+        } catch {
+          groups[name] = { group: name, label: reuseGroups[name]?.label || name, data: {} };
+        }
+      }));
+
+      res.json({ dealId, transactionType: txnType, groups });
+    } catch (e) {
+      console.error('Fill data load error:', e.message);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+
+  // ========================================================================
+  // PUT /api/deals/:id/fill-data - Save core deal data from text fill
+  // ========================================================================
+  router.put('/deals/:id/fill-data', async (req, res) => {
+    try {
+      const dealId = parseInt(req.params.id);
+      if (isNaN(dealId)) return res.status(400).json({ error: 'Invalid deal ID' });
+
+      const owns = await verifyDealOwnership(pool, dealId, req.agent.agent_id);
+      if (!owns) return res.status(404).json({ error: 'Deal not found' });
+
+      const { groups } = req.body;
+      if (!groups || typeof groups !== 'object') {
+        return res.status(400).json({ error: 'Request body must include "groups" object' });
+      }
+
+      const result = await saveFillData(pool, dealId, groups);
+
+      // Log activity
+      try {
+        await pool.query(
+          `INSERT INTO deal_activity_log (transaction_id, agent_id, action, details)
+           VALUES ($1, $2, 'text_fill', $3)`,
+          [dealId, req.agent.agent_id, JSON.stringify({ groupCount: Object.keys(groups).length, fieldsSaved: result.saved })]
+        );
+      } catch (logErr) {
+        console.warn('Activity log failed:', logErr.message);
+      }
+
+      res.json({ message: 'Fill data saved', ...result });
+    } catch (e) {
+      console.error('Fill data save error:', e.message);
       res.status(500).json({ error: 'Internal server error' });
     }
   });
